@@ -16,6 +16,7 @@ class _PasswordPageState extends State<PasswordPage> {
   String pass;
   var allrows = [];
   bool _secureText = true;
+  bool _text = true;
 
   TextStyle titlestyle = TextStyle(
     fontSize: 18.0,
@@ -254,6 +255,23 @@ class _PasswordPageState extends State<PasswordPage> {
     );
   }
 
+  passCheck(String dataPass, bool b, int index) {
+    setState(() {
+      _text = !_text;
+    });
+    if (_text == true) {
+      return pass = "${allrows[index]['pass']}";
+      // print("${allrows[index]['pass']}");
+    } else
+      return pass = '${allrows[index]['pass'].replaceAll(RegExp(r"."), "*")}';
+    //  ? print('${allrows[index]['pass'].replaceAll(RegExp(r"."), "*")}');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   Container card(BuildContext context, int index) {
     return Container(
       margin: EdgeInsets.only(
@@ -294,6 +312,15 @@ class _PasswordPageState extends State<PasswordPage> {
                   ),
                   onPressed: () {
                     deleltedata(allrows[index]['id']);
+                  }),
+              IconButton(
+                  icon: Icon(
+                    _text ? FontAwesomeIcons.eye : Icons.security_rounded,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      passCheck(allrows[index]['pass'], _text, index);
+                    });
                   })
             ],
           ),
@@ -312,7 +339,13 @@ class _PasswordPageState extends State<PasswordPage> {
                 ),
               ),
               subtitle: Text(
-                allrows[index]['pass'],
+                // allrows[index]['pass'],
+                // _text == true
+                //     ? allrows[index]['pass']
+                //     : '${allrows[index]['pass'].replaceAll(RegExp(r"."), "*")}',
+                pass == null || _text == true
+                    ? '${allrows[index]['pass'].replaceAll(RegExp(r"."), "*")}'
+                    : allrows[index]['pass'],
                 style: subtitlestyle,
               ),
             ),

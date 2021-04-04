@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
                 splashColor: Colors.pink.withAlpha(50),
               ),
               CustomCard(
-                data: "Notes",
+                data: "Todo",
                 onTap: () {
                   Navigator.push(
                     context,

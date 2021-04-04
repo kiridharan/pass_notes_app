@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:password_app/Pages/FingerAuthPage.dart';
 
-import 'package:password_app/Pages/MainPage.dart';
-
 void main() {
   runApp(MyApp());
 }
