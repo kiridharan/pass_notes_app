@@ -18,8 +18,9 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ## Run App
-
-cd pass_notes_app
-flutter pub get
-flutter run
+```
+$ cd pass_notes_app
+$ flutter pub get
+$ flutter run
+```
 
